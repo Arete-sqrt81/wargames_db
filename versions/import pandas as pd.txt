@@ -1,0 +1,105 @@
+import pandas as pd
+from sqlalchemy import create_engine
+
+DB_PATH = "db/wahapedia.db"
+engine = create_engine(f"sqlite:///{DB_PATH}")
+
+import re
+
+def parse_save(sv):
+    """Parse '3+' as 3, '2+' as 2, etc."""
+    if isinstance(sv, str) and sv.endswith('+'):
+        return int(sv[:-1])
+    return None
+
+def parse_ap(ap):
+    """Parse AP as integer, e.g., '-2' as -2."""
+    try:
+        return int(ap)
+    except (ValueError, TypeError):
+        return None
+
+def is_fixed_number(val):
+    """Return True if val is a fixed integer (not dice expression)."""
+    try:
+        int(val)
+        return True
+    except (ValueError, TypeError):
+        return False
+    
+
+import re
+
+def average_attacks(a_str):
+    if not isinstance(a_str, str):
+        try:
+            return float(a_str)
+        except (ValueError, TypeError):
+            return None
+    a_str = a_str.strip().upper()
+    # Fixed number
+    if a_str.isdigit():
+        return float(a_str)
+    # D6, D6+1, D3, D3+1, etc.
+    match = re.match(r'D(\d)(\+(\d+))?', a_str)
+    if match:
+        die = int(match.group(1))
+        plus = int(match.group(3)) if match.group(3) else 0
+        avg = (1 + die) / 2 + plus
+        return avg
+    return None
+
+# ...existing code...
+
+# Example: Query for unit chassis stats
+query_units = """
+SELECT
+    f.name AS faction_name,
+    d.name AS unit_name,
+    m.name AS model_name,
+    m.Sv,
+    m.W,
+    c.cost,
+    c.description AS cost_description,
+    m.keywords
+FROM datasheets_models m
+JOIN datasheets d ON m.datasheet_id = d.id
+JOIN factions f ON d.faction_id = f.id
+LEFT JOIN datasheets_models_cost c ON d.id = c.datasheet_id
+WHERE LOWER(f.name) = 'space marines'
+"""
+
+# Example: Query for weapon stats
+query_weapons = """
+SELECT
+    f.name AS faction_name,
+    d.name AS unit_name,
+    w.name AS weapon_name,
+    w.range, w.A, w.BS_WS, w.S, w.AP, w.D
+FROM datasheets_wargear w
+JOIN datasheets d ON w.datasheet_id = d.id
+JOIN factions f ON d.faction_id = f.id
+WHERE LOWER(f.name) = 'tyranids'
+"""
+
+df_units = pd.read_sql(query_units, engine)
+df_weapons = pd.read_sql(query_weapons, engine)
+
+# Example: Parse and filter
+df_units['parsed_sv'] = df_units['Sv'].apply(parse_save)
+# df_weapons['avg_attacks'] = df_weapons['A'].apply(average_attacks)
+# df_weapons['parsed_ap'] = df_weapons['AP'].apply(parse_ap)
+
+df_units = pd.read_sql(query_units, engine)
+df_units['parsed_sv'] = df_units['Sv'].apply(parse_save)
+
+# Filter out units with 'Character' in keywords (case-insensitive)
+
+df_units = df_units[~df_units['keywords'].str.contains('character', case=False, na=False)]
+
+# Apply the "terminator" filter: Sv 2+ AND max 5 W
+filtered_units = df_units[(df_units['parsed_sv'] == 2) & (df_units['W'].astype(int) <= 5)]
+
+# Select columns of interest
+result = filtered_units[['unit_name', 'Sv', 'cost', 'cost_description', 'W']]
+print(result)

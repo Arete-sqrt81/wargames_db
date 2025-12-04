@@ -1,0 +1,31 @@
+﻿C:\Users\erikw\Development\Python\Warhammer\Waha data extraction\analysis_query.py
+C:\Users\erikw\Development\Python\Warhammer\Waha data extraction\create_view.py
+C:\Users\erikw\Development\Python\Warhammer\Waha data extraction\explore_db_schema.py
+C:\Users\erikw\Development\Python\Warhammer\Waha data extraction\import_csv_to_db.py
+C:\Users\erikw\Development\Python\Warhammer\Waha data extraction\starter_etl.py
+C:\Users\erikw\Development\Python\Warhammer\Waha data extraction\unit_rule_report.py
+C:\Users\erikw\Development\Python\Warhammer\Waha data extraction\unit_stats_report.py
+C:\Users\erikw\Development\Python\Warhammer\Waha data extraction\workspace_files.txt
+C:\Users\erikw\Development\Python\Warhammer\Waha data extraction\db\wahapedia.db
+C:\Users\erikw\Development\Python\Warhammer\Waha data extraction\processed\warhammer_star.db
+C:\Users\erikw\Development\Python\Warhammer\Waha data extraction\versions\import pandas as pd.txt
+C:\Users\erikw\Development\Python\Warhammer\Waha data extraction\waha_csv\Abilities.csv
+C:\Users\erikw\Development\Python\Warhammer\Waha data extraction\waha_csv\Datasheets.csv
+C:\Users\erikw\Development\Python\Warhammer\Waha data extraction\waha_csv\Datasheets_abilities.csv
+C:\Users\erikw\Development\Python\Warhammer\Waha data extraction\waha_csv\Datasheets_detachment_abilities.csv
+C:\Users\erikw\Development\Python\Warhammer\Waha data extraction\waha_csv\Datasheets_enhancements.csv
+C:\Users\erikw\Development\Python\Warhammer\Waha data extraction\waha_csv\Datasheets_keywords.csv
+C:\Users\erikw\Development\Python\Warhammer\Waha data extraction\waha_csv\Datasheets_leader.csv
+C:\Users\erikw\Development\Python\Warhammer\Waha data extraction\waha_csv\Datasheets_models.csv
+C:\Users\erikw\Development\Python\Warhammer\Waha data extraction\waha_csv\Datasheets_models_cost.csv
+C:\Users\erikw\Development\Python\Warhammer\Waha data extraction\waha_csv\Datasheets_options.csv
+C:\Users\erikw\Development\Python\Warhammer\Waha data extraction\waha_csv\Datasheets_stratagems.csv
+C:\Users\erikw\Development\Python\Warhammer\Waha data extraction\waha_csv\Datasheets_unit_composition.csv
+C:\Users\erikw\Development\Python\Warhammer\Waha data extraction\waha_csv\Datasheets_wargear.csv
+C:\Users\erikw\Development\Python\Warhammer\Waha data extraction\waha_csv\Detachment_abilities.csv
+C:\Users\erikw\Development\Python\Warhammer\Waha data extraction\waha_csv\Enhancements.csv
+C:\Users\erikw\Development\Python\Warhammer\Waha data extraction\waha_csv\Export Data Specs.xlsx
+C:\Users\erikw\Development\Python\Warhammer\Waha data extraction\waha_csv\Factions.csv
+C:\Users\erikw\Development\Python\Warhammer\Waha data extraction\waha_csv\Last_update.csv
+C:\Users\erikw\Development\Python\Warhammer\Waha data extraction\waha_csv\Source.csv
+C:\Users\erikw\Development\Python\Warhammer\Waha data extraction\waha_csv\Stratagems.csv
